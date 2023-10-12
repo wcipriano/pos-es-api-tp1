@@ -11,7 +11,6 @@ class Database {
     for (const key in this.data) {
       this.data_version[key] = new Array(1, new Date(Date.now()).toISOString());
     }
-    console.log(this.data_version);
   };
   inc_data_version = function (resource) {
     this.data_version[resource][0] = this.data_version[resource][0] + 1;

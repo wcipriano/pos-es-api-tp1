@@ -3,7 +3,6 @@ const errs = require("restify-errors");
 const server = restify.createServer();
 
 server.use(restify.plugins.acceptParser(server.acceptable));
-server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
 
 const Database = require("./database");
@@ -30,21 +29,27 @@ get_error_rq = function (req) {
   return err;
 };
 
+/* 
+Plugin that will compare an already set ETag header with the client's header
+  IF client send Header "If-None-Match" and it's the same of "ETag" Header:
+    Server return 304 (Not Modified)
+  ELSE:
+    Server return 200
+*/
+server.use(restify.plugins.conditionalRequest());
+
 server.use(function (req, res, next) {
+  //Check RQ Erros
   let err = get_error_rq(req);
   if (err) return next(err);
-
+  //Set Headers
   let etag = db.get_etag_by_resource(req, 0);
   let lastmod = db.get_etag_by_resource(req, 1);
-  console.log("ETag req: ", req.header("ETag"), "  ETag res: ", etag);
-  // restify.plugins.conditionalRequest();
   set_header_to_cache(res, etag, lastmod);
-  if (etag == req.header("ETag")) {
-    const error_msg = `Resource /${req.params.resource} not modified!`;
-    return res.send(304, new Error(error_msg));
-  }
   return next();
 });
+
+server.use(restify.plugins.conditionalRequest());
 
 server.get("/", (req, res, next) => {
   res.send({ mensagem: "Welcome MyRestify API TP1" });
