@@ -9,19 +9,16 @@ server.use(restify.plugins.bodyParser());
 const Database = require("./database");
 const db = new Database();
 
-// server.use(restify.bodyParser());
-
 set_header_to_cache = function (res, etag, lastmod) {
   res.header("ETag", etag);
   res.header("Last-Modified", lastmod);
   res.setHeader("Content-Type", "application/json");
-  res.setHeader("Server", "MyRestify");
 };
 
 get_error_rq = function (req) {
   let err = null;
   if (req.params.resource && !db.data.hasOwnProperty(req.params.resource)) {
-    err = new errs.NotFoundError(`Resource ${req.params.resource} not found!`);
+    err = new errs.NotFoundError(`Resource /${req.params.resource} not found!`);
   }
   if (req.params.id) {
     let item = db.get_resource_by_id(req.params.resource, req.params.id);
@@ -43,7 +40,8 @@ server.use(function (req, res, next) {
   // restify.plugins.conditionalRequest();
   set_header_to_cache(res, etag, lastmod);
   if (etag == req.header("ETag")) {
-    res.send(304, new Error(`Resource ${req.params.resource} not modified!`));
+    const error_msg = `Resource /${req.params.resource} not modified!`;
+    return res.send(304, new Error(error_msg));
   }
   return next();
 });
