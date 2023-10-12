@@ -34,19 +34,27 @@ const resultados = {
 
 </br>
 
-### Endpoints GET (All) ✅
+https://pos-es-api-tp1.onrender.com/api/ping
 
-- https://localhost/pessoas
-- https://localhost/carros
-- https://localhost/animais
+https://pos-es-api-tp1.onrender.com/api/ping
+
+### Resources Endpoints GET (All) ✅
+
+- https://pos-es-api-tp1.onrender.com/api/pessoas
+- https://pos-es-api-tp1.onrender.com/api/carros
+- https://pos-es-api-tp1.onrender.com/api/animais
 
 </br>
 
-### Endpoints GET (item) ✅
+### Resources Endpoints GET (item) ✅
 
-- https://localhost/pessoas/1
-- https://localhost/carros/2
-- https://localhost/animais/3
+- https://pos-es-api-tp1.onrender.com/api/pessoas/1
+- https://pos-es-api-tp1.onrender.com/api/carros/2
+- https://pos-es-api-tp1.onrender.com/api/animais/3
+
+### RESTFull API
+
+Allowed Methods: GET, POST, PATH, DELETE
 
 <br/>
 
@@ -75,12 +83,6 @@ Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se
 - Github
 - render.com
 
-## REFS:
-
-- http://restify.com/docs/home/
-- https://blog.risingstack.com/10-best-practices-for-writing-node-js-rest-apis#7useconditionalrequests
-- https://github.com/FaztWeb/restify-crud/blob/master/src/app.js
-
 ## Backlog
 
 - [Include Database](https://www.mongodb.com/nodejs-database).
@@ -89,8 +91,40 @@ Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se
 
 ## How to configure Local Deploy
 
-1. Clone project
-2. Open project folder
-3. nvm use v20.8.0
-4. npm install
-5. node index.js;
+1. Clone project:
+   `git clone https://github.com/wcipriano/pos-es-api-tp1.git`
+2. Open project folder:
+   `cd pos-es-api-tp1/`
+3. Create .env file and put key: `PORT=4334`
+4. Install node, npm and nvm (if necessary): [link](https://medium.com/@iam_vinojan/how-to-install-node-js-and-npm-using-node-version-manager-nvm-143165b16ce1)
+5. Set npm version: `nvm use v20.8.0`. See the versions below:
+
+   ```json
+   "npm": ">=9.6.2 <=10.2.0",
+   "node": ">=14.17.0 <=20.8.0"
+   ```
+
+6. Install packages: `npm install`
+7. Run the application: `npm start`
+
+## Hospegagem
+
+Esta api está hospedada no [render](https://render.com/) em uma <b>instancia gratuita</b>.
+
+<span style="color:red">
+Instâncias gratuitas entram em estado de hibernação quando ficam inativas, se receber requisições por mais de 15min. 
+</span>
+Com isso uma primeira requisição pode demorar até 2min para que a instancia volte para o estado ativo novamente. Mas depois, para as próximas requisições passa a responder normalmente.
+
+Segue o endereço para acesso à API: https://pos-es-api-tp1.onrender.com/api/
+
+## Projeto
+
+Utilize [este link](./Insomnia_2023-10-12.json) Segue abaixo o link para o arquivo JSON do projeto para subir em uma ferramenta de testes (insomnia, Postman, etc)
+
+## REFS:
+
+- http://restify.com/docs/home/
+- https://blog.risingstack.com/10-best-practices-for-writing-node-js-rest-apis#7useconditionalrequests
+- https://github.com/FaztWeb/restify-crud/blob/master/src/app.js
+- https://restfulapi.net/http-methods/
