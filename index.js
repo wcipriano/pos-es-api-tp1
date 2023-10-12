@@ -60,10 +60,10 @@ server.use(restify.plugins.conditionalRequest());
 
 // Routes
 server.get(`${path}/`, (req, res, next) => {
-  res.send({ mensagem: "Welcome MyRestify API TP1" });
+  res.send({ mensagem: "Welcome Restify AWS API TP1. Have fun!!!" });
 });
 server.get(`${path}/ping`, (req, res, next) => {
-  res.send("Welcome Restify API TP1. Have fun!!!");
+  res.send("I'm here, don't worry  ; )   Restify AWS API TP1");
 });
 
 server.get(`${path}/:resource`, (req, res, next) => {
