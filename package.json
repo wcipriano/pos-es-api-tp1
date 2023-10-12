@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "restify": "^11.1.0",
     "restify-plugins": "^1.6.0"
   }

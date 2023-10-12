@@ -1,19 +1,26 @@
+// Lib requirements
 const restify = require("restify");
 const errs = require("restify-errors");
 const server = restify.createServer();
+require("dotenv").config();
 
+// Lib restify plugins
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.bodyParser());
 
+// Consts
 const Database = require("./database");
 const db = new Database();
+const path = "/api";
 
+// Set headers
 set_header_to_cache = function (res, etag, lastmod) {
   res.header("ETag", etag);
   res.header("Last-Modified", lastmod);
   res.setHeader("Content-Type", "application/json");
 };
 
+// Request error validation
 get_error_rq = function (req) {
   let err = null;
   if (req.params.resource && !db.data.hasOwnProperty(req.params.resource)) {
@@ -51,18 +58,21 @@ server.use(function (req, res, next) {
 
 server.use(restify.plugins.conditionalRequest());
 
-server.get("/", (req, res, next) => {
+// Routes
+server.get(`${path}/`, (req, res, next) => {
   res.send({ mensagem: "Welcome MyRestify API TP1" });
-  next();
+});
+server.get(`${path}/ping`, (req, res, next) => {
+  res.send("Welcome Restify API TP1. Have fun!!!");
 });
 
-server.get("/:resource", (req, res, next) => {
+server.get(`${path}/:resource`, (req, res, next) => {
   if (req.params.resource in db.data) {
     res.end(JSON.stringify(db.data[req.params.resource]));
   }
 });
 
-server.get("/:resource/:id", (req, res, next) => {
+server.get(`${path}/:resource/:id`, (req, res, next) => {
   let item = db.get_resource_by_id(req.params.resource, req.params.id);
   if (item) {
     res.end(JSON.stringify(item));
@@ -71,13 +81,14 @@ server.get("/:resource/:id", (req, res, next) => {
 });
 
 // POST - Insert Resource
-server.post("/:resource", (req, res, next) => {
+server.post(`${path}/:resource`, (req, res, next) => {
   console.log("form:: ", req.body, typeof req.body);
   let item = db.insert(req.params.resource, req.body);
-  res.end(JSON.stringify(item));
+  res.send(201, item);
   next();
 });
 
-server.listen(3000, () => {
+// Server
+server.listen(process.env.PORT, () => {
   console.log("Done! Waiting for requests..");
 });

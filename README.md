@@ -59,9 +59,11 @@ Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se
 **Como simular**:
 
   <ol type="a">
-  <li>Fazer uma chamada a um resource, ex: /pessoas, sem headers ➜ <b>200</b> </li>
-  <li>Copiar o valor do header <i>ETag</i> retornado, ex: <i>"ETag: pessoas_2</i></li>
-  <li>Fazer uma nova chamada ao mesmo resource enviando o header <i>If-None-Match</i> com o valor obtido do "ETag" na chamada anterior, ex: <i>"If-None-Match: pessoas_2</i> ➜ <b>304</b></li>
+  <li>Fazer uma chamada <u>GET</u> a um resource, ex: /pessoas, sem headers ➜ <b>200</b> </li>
+  <li>Copiar o valor do header <b>ETag</b> retornado nos response, ex: <i>ETag ⇢ pessoas_2</i></li>
+  <li>Fazer uma nova chamada <u>GET</u> ao mesmo resource enviando o header <b>If-None-Match</b> com o valor obtido do "ETag" na chamada anterior, ex: <i>If-None-Match: pessoas_1</i> ➜ <b>304</b></li>
+  <li>Fazer uma chamada <u>POST</u> ao mesmo resource passando um payload correto para inserir um novo registro, ex resource pessoas:<i>{"nome": "Albert Einstein"}</i>  ➜ <b>201</b></li>
+  <li>Repetir a chamada <u>GET</u> do passo <i>c</i> ➜ <b>200</b> </li>
   </ol>
   </blockquote>
 
