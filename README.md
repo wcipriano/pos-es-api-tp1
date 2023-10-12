@@ -1,12 +1,16 @@
-# APIs e Webservices - TP1 - Implementação API
+## APIs e Webservices - TP1 - Implementação API
 
 Nome: Wager Cipriano - 993540
-pos-es-api-tp1
+
 Pos-graduação Especialização em Engenharia de Software - PucMG - AWS - Trabalho Prático 1 - Implementação de API
 
 ## TP1
 
-Dado o seguinte objeto que se segue:
+Implementação de uma API RESTFull com controle de cache por resource.
+
+[Link da Atividade no LMS](https://pucminas.instructure.com/courses/152486/assignments/801994)
+
+### Banco de dados:
 
 ```javascript
 const resultados = {
@@ -28,49 +32,58 @@ const resultados = {
 };
 ```
 
-1. Fazer um servidor web que devolva os dados acima, de acordo com a url acessada
-   https://localhost/pessoas
-   https://localhost/carros
-   https://localhost/animais
+</br>
 
-2. Fazer um sistema de cache que, se o valor mudar devolvo status 200 e o novo array, se o array for igual da ultima chamada, devolver 304
+### Endpoints GET (All) ✅
 
-3. Ponto extra (devolver apenas um item)
-   https://localhost/pessoas/1
-   https://localhost/carros/2
-   https://localhost/animais/3
+- https://localhost/pessoas
+- https://localhost/carros
+- https://localhost/animais
 
-4. Orientação de Entrega:
-   Enviar um link do GitHub ou GitLab com o código (programa), incluindo um arquivo README.md com os dados dos integrantes do grupo (nome completo e matricula)
+</br>
 
-## Implementação API com Cache server
+### Endpoints GET (item) ✅
 
-Link da Atividade no LMS
-https://pucminas.instructure.com/courses/152486/assignments/801994
+- https://localhost/pessoas/1
+- https://localhost/carros/2
+- https://localhost/animais/3
+
+<br/>
+
+### Cache control ✅
+
+Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se o array for igual da ultima chamada, devolver **304**
+
+  <blockquote style="color:darkgreen">
+
+**Como simular**:
+
+  <ol type="a">
+  <li>Fazer uma chamada a um resource, ex: /pessoas, sem headers ➜ <b>200</b> </li>
+  <li>Copiar o valor do header <i>ETag</i> retornado, ex: <i>"ETag: pessoas_2</i></li>
+  <li>Fazer uma nova chamada ao mesmo resource enviando o header <i>If-None-Match</i> com o valor obtido do "ETag" na chamada anterior, ex: <i>"If-None-Match: pessoas_2</i> ➜ <b>304</b></li>
+  </ol>
+  </blockquote>
+
+</br>
 
 ## Ferramentas/arquitetura:
 
-render.com, Node + Restify
+- Node + Restify
+- Github
+- render.com
 
 ## REFS:
 
-http://restify.com/docs/home/
-https://blog.risingstack.com/10-best-practices-for-writing-node-js-rest-apis#7useconditionalrequests
-https://github.com/FaztWeb/restify-crud/blob/master/src/app.js
+- http://restify.com/docs/home/
+- https://blog.risingstack.com/10-best-practices-for-writing-node-js-rest-apis#7useconditionalrequests
+- https://github.com/FaztWeb/restify-crud/blob/master/src/app.js
 
-## JS -> Node -> Deno -> Bun
+## Backlog
 
-https://snyk.io/blog/javascript-runtime-compare-node-deno-bun/
-
-## Furure
-
-- Include Database:
-  https://www.mongodb.com/nodejs-database
-
+- [Include Database](https://www.mongodb.com/nodejs-database).
 - JWT-Based, Stateless Authentication
-
--- ESLint
-https://eslint.org/docs/latest/use/getting-started
+- [ESLint Config](https://eslint.org/docs/latest/use/getting-started)
 
 ## How to configure Local Deploy
 
