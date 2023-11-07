@@ -17,12 +17,8 @@ Pos-graduação Especialização em Engenharia de Software - PucMG - AWS - Traba
 > Com isso, uma primeira requisição pode **demorar até 5min** para que a instancia volte para o estado ativo novamente.
 > Mas depois, para as próximas requisições passa a responder normalmente.
 
-
 $\color{gray}{Segue\ o\ endereço\ para\ acesso\ à\ API:}$
 [https://pos-es-api-tp1.onrender.com/api/](https://pos-es-api-tp1.onrender.com/api/)
-
-
-
 
 ## TP1
 
@@ -88,10 +84,10 @@ Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se
 
   <ol type="a">
   <li>Fazer uma chamada <u>GET</u> a um resource, ex: /pessoas, sem headers ➜ <b>200</b> </li>
-  <li>Copiar o valor do header <b>ETag</b> retornado nos response, ex: <i>ETag ⇢ pessoas_2</i></li>
-  <li>Fazer uma nova chamada <u>GET</u> ao mesmo resource enviando o header <b>If-None-Match</b> com o valor obtido do "ETag" na chamada anterior, ex: <i>If-None-Match: pessoas_1</i> ➜ <b>304</b></li>
+  <li>Copiar o valor do header <b>ETag2</b> retornado nos response, ex: <i>ETag2 ⇢ pessoas_2023-11-07_1</i></li>
+  <li>Fazer uma nova chamada <u>GET</u> ao mesmo resource enviando o header <b>If-None-Match</b> com o mesmo valor obtido do "ETag2" na chamada anterior, ex: <i>If-None-Match: pessoas_2023-11-07_1</i> ➜ <b>304</b></li>
   <li>Fazer uma chamada <u>POST</u> ao mesmo resource passando um payload correto para inserir um novo registro, ex resource pessoas:<i>{"nome": "Albert Einstein"}</i>  ➜ <b>201</b></li>
-  <li>Repetir a chamada <u>GET</u> do passo <i>c</i> ➜ <b>200</b> </li>
+  <li>Repetir a chamada <u>GET</u> do passo <i>c</i> com os mesmos parâmetros e headers ➜ <b>200</b> </li>
   </ol>
   </blockquote>
 
@@ -126,7 +122,6 @@ Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se
 
 6. Install packages: `npm install`
 7. Run the application: `npm start`
-
 
 ## Projeto
 
