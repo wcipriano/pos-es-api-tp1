@@ -20,8 +20,11 @@ class Database {
     );
   };
   get_etag_by_resource = function (req, idx) {
+    const dt = new Date().toISOString().split("T")[0];
     return req.params.resource in this.data_version
-      ? `${req.params.resource}_${this.data_version[req.params.resource][idx]}`
+      ? `${req.params.resource}_${dt}_${
+          this.data_version[req.params.resource][idx]
+        }`
       : "";
   };
   get_resource_by_id = function (resource, id, ret_obj) {
