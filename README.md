@@ -4,6 +4,26 @@ Nome: Wager Cipriano - 993540
 
 Pos-graduação Especialização em Engenharia de Software - PucMG - AWS - Trabalho Prático 1 - Implementação de API
 
+## Hospegagem
+
+> [!NOTE]  
+> Esta api está hospedada no [render](https://render.com/) em uma <b>instancia gratuita</b>.
+
+> [!IMPORTANT]  
+> Instâncias gratuitas entram em estado de hibernação quando ficam inativas, se receber requisições por mais de 15min.
+> SE OPTAR por utilizar a versão hospedada tenha **conciência deste fato** !
+
+> [!WARNING]  
+> Com isso, uma primeira requisição pode **demorar até 5min** para que a instancia volte para o estado ativo novamente.
+> Mas depois, para as próximas requisições passa a responder normalmente.
+
+
+$\color{gray}{Segue\ o\ endereço\ para\ acesso\ à\ API:}$
+[https://pos-es-api-tp1.onrender.com/api/](https://pos-es-api-tp1.onrender.com/api/)
+
+
+
+
 ## TP1
 
 Implementação de uma API RESTFull com controle de cache por resource.
@@ -107,16 +127,6 @@ Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se
 6. Install packages: `npm install`
 7. Run the application: `npm start`
 
-## Hospegagem
-
-Esta api está hospedada no [render](https://render.com/) em uma <b>instancia gratuita</b>.
-
-<span style="color:red">
-Instâncias gratuitas entram em estado de hibernação quando ficam inativas, se receber requisições por mais de 15min. 
-</span>
-Com isso uma primeira requisição pode demorar até 2min para que a instancia volte para o estado ativo novamente. Mas depois, para as próximas requisições passa a responder normalmente.
-
-Segue o endereço para acesso à API: https://pos-es-api-tp1.onrender.com/api/
 
 ## Projeto
 
