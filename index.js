@@ -16,6 +16,7 @@ const path = "/api";
 // Set headers
 set_header_to_cache = function (res, etag, lastmod) {
   res.header("ETag", etag);
+  res.header("ETag2", etag);
   res.header("Last-Modified", lastmod);
   res.setHeader("Content-Type", "application/json");
 };
