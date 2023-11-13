@@ -91,6 +91,8 @@ Sistema de cache que, se o valor mudar devolvo status **200** e o novo array, se
   </ol>
   </blockquote>
 
+  OBS: Está sendo utilizado o header chamado "ETag2" porque o o header "ETag" padrão está sendo sobrescrito pelo default da CDN (cloudflare) quando utilizamos a versão hospedada no render.com conforme [referência](https://community.render.com/t/are-etags-overwritten-by-renders-default-cdn/6899). Porém, na versão local funciona normalmente.
+
 </br>
 
 ## Ferramentas/arquitetura:
