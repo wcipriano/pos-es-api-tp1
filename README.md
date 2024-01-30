@@ -1,4 +1,4 @@
-## APIs e Webservices - TP1 - Implementação API
+## APIs e Webservices - TP1
 
 Nome: Wager Cipriano - 993540
 
